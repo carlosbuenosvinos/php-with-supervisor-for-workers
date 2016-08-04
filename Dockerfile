@@ -8,7 +8,10 @@ RUN apt-get update && apt-get install -y supervisor && apt-get clean
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /usr/src/app
 
-VOLUME ["/etc/supervisor/conf.d", "/usr/src/app"]
+COPY supervisord.conf /etc/supervisor/supervisord.conf
+
+VOLUME ["/etc/supervisor/conf.d"]
+VOLUME ["/usr/src/app"]
 
 EXPOSE 9001
 
